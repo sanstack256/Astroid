@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------------------------------
-# Black Background with Animated Subtle Radial Gradient
+# Black Background with Smooth Moving Green Radial Gradient
 # -----------------------------------------------------------------------------
 st.markdown(
     """
@@ -23,26 +23,50 @@ st.markdown(
         overflow-x: hidden;
     }
 
-    /* Animated subtle radial neon gradient layer */
+    /* Primary smooth-moving green radial gradient orb */
     [data-testid="stAppViewContainer"]::before {
         content: "";
         position: fixed;
-        top: -60%;
-        left: -60%;
-        width: 220%;
-        height: 220%;
-        background: 
-            radial-gradient(circle at 30% 35%, rgba(0, 242, 254, 0.14) 0%, transparent 36%),
-            radial-gradient(circle at 72% 28%, rgba(168, 85, 247, 0.16) 0%, transparent 38%),
-            radial-gradient(circle at 68% 72%, rgba(244, 63, 94, 0.11) 0%, transparent 36%),
-            radial-gradient(circle at 28% 70%, rgba(56, 189, 248, 0.13) 0%, transparent 35%),
-            radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.09) 0%, transparent 40%);
-        animation: subtleRadialGlide 32s ease-in-out infinite alternate;
+        top: 0;
+        left: 0;
+        width: 750px;
+        height: 750px;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle,
+            rgba(16, 185, 129, 0.22) 0%,
+            rgba(5, 150, 105, 0.12) 35%,
+            rgba(4, 120, 87, 0.05) 55%,
+            transparent 70%
+        );
+        filter: blur(50px);
+        animation: smoothGreenTravelPrimary 26s ease-in-out infinite alternate;
         pointer-events: none;
         z-index: 0;
     }
 
-    /* Ensure content renders cleanly above the ambient background */
+    /* Secondary subtle green radial gradient orb for continuous ambient flow */
+    [data-testid="stAppViewContainer"]::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle,
+            rgba(52, 211, 153, 0.16) 0%,
+            rgba(16, 185, 129, 0.08) 40%,
+            transparent 68%
+        );
+        filter: blur(60px);
+        animation: smoothGreenTravelSecondary 32s ease-in-out infinite alternate;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* Ensure content renders cleanly above the moving ambient glow */
     [data-testid="stAppViewContainer"] > .main {
         position: relative;
         z-index: 1;
@@ -53,19 +77,38 @@ st.markdown(
         background: transparent !important;
     }
 
-    /* Subtle radial gradient animation drifting across the screen */
-    @keyframes subtleRadialGlide {
+    /* Primary green orb smooth journey across the screen */
+    @keyframes smoothGreenTravelPrimary {
         0% {
-            transform: translate(0, 0) rotate(0deg) scale(1);
+            transform: translate3d(-10vw, -10vh, 0) scale(1);
         }
-        33% {
-            transform: translate(4%, 3%) rotate(4deg) scale(1.03);
+        25% {
+            transform: translate3d(65vw, 15vh, 0) scale(1.15);
         }
-        66% {
-            transform: translate(-3%, 5%) rotate(-3deg) scale(0.98);
+        50% {
+            transform: translate3d(45vw, 65vh, 0) scale(0.95);
+        }
+        75% {
+            transform: translate3d(5vw, 50vh, 0) scale(1.1);
         }
         100% {
-            transform: translate(3%, -4%) rotate(5deg) scale(1.02);
+            transform: translate3d(55vw, 80vh, 0) scale(1.05);
+        }
+    }
+
+    /* Secondary green orb companion trajectory */
+    @keyframes smoothGreenTravelSecondary {
+        0% {
+            transform: translate3d(70vw, 75vh, 0) scale(1);
+        }
+        30% {
+            transform: translate3d(20vw, 60vh, 0) scale(1.12);
+        }
+        65% {
+            transform: translate3d(55vw, -5vh, 0) scale(0.92);
+        }
+        100% {
+            transform: translate3d(-5vw, 25vh, 0) scale(1.08);
         }
     }
 
@@ -84,23 +127,23 @@ st.markdown(
     .stTextInput > div > div:focus-within,
     .stNumberInput > div > div:focus-within,
     .stTextArea > div > div:focus-within {
-        border-color: #38bdf8 !important;
-        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25) !important;
+        border-color: #10b981 !important;
+        box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25) !important;
     }
 
-    /* Primary button with vibrant neon accent */
+    /* Primary button with emerald neon styling */
     button[kind="primary"] {
-        background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%) !important;
+        background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
         border: none !important;
         border-radius: 10px !important;
         font-weight: 600 !important;
-        box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35) !important;
+        box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3) !important;
         transition: transform 0.2s ease, box-shadow 0.2s ease !important;
     }
 
     button[kind="primary"]:hover {
         transform: translateY(-1px);
-        box-shadow: 0 6px 22px rgba(56, 189, 248, 0.45) !important;
+        box-shadow: 0 6px 22px rgba(16, 185, 129, 0.45) !important;
     }
     </style>
     """,
