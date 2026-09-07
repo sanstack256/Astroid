@@ -11,75 +11,96 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------------------------------
-# Animated Subtle Light Neon Background Gradient
+# Black Background with Animated Subtle Radial Gradient
 # -----------------------------------------------------------------------------
 st.markdown(
     """
     <style>
-    /* Animated subtle light neon gradient across full viewport */
+    /* Deep black background canvas */
     [data-testid="stAppViewContainer"] {
-        background: linear-gradient(
-            -45deg,
-            #e0f7ff 0%,
-            #ede9fe 25%,
-            #ffe8f5 50%,
-            #d1fae5 75%,
-            #e0e7ff 100%
-        ) !important;
-        background-size: 350% 350% !important;
-        animation: subtleNeonShift 18s ease-in-out infinite !important;
-        background-attachment: fixed !important;
+        background-color: #000000 !important;
+        position: relative;
+        overflow-x: hidden;
     }
 
-    /* Keep header transparent for seamless background flow */
+    /* Animated subtle radial neon gradient layer */
+    [data-testid="stAppViewContainer"]::before {
+        content: "";
+        position: fixed;
+        top: -60%;
+        left: -60%;
+        width: 220%;
+        height: 220%;
+        background: 
+            radial-gradient(circle at 30% 35%, rgba(0, 242, 254, 0.14) 0%, transparent 36%),
+            radial-gradient(circle at 72% 28%, rgba(168, 85, 247, 0.16) 0%, transparent 38%),
+            radial-gradient(circle at 68% 72%, rgba(244, 63, 94, 0.11) 0%, transparent 36%),
+            radial-gradient(circle at 28% 70%, rgba(56, 189, 248, 0.13) 0%, transparent 35%),
+            radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.09) 0%, transparent 40%);
+        animation: subtleRadialGlide 32s ease-in-out infinite alternate;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* Ensure content renders cleanly above the ambient background */
+    [data-testid="stAppViewContainer"] > .main {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Keep header transparent for seamless full-screen ambiance */
     header[data-testid="stHeader"] {
         background: transparent !important;
     }
 
-    /* Subtle neon gradient animation */
-    @keyframes subtleNeonShift {
+    /* Subtle radial gradient animation drifting across the screen */
+    @keyframes subtleRadialGlide {
         0% {
-            background-position: 0% 50%;
+            transform: translate(0, 0) rotate(0deg) scale(1);
         }
-        50% {
-            background-position: 100% 50%;
+        33% {
+            transform: translate(4%, 3%) rotate(4deg) scale(1.03);
+        }
+        66% {
+            transform: translate(-3%, 5%) rotate(-3deg) scale(0.98);
         }
         100% {
-            background-position: 0% 50%;
+            transform: translate(3%, -4%) rotate(5deg) scale(1.02);
         }
     }
 
-    /* Refined glassmorphism cards for input elements */
+    /* Refined dark glassmorphic input cards */
     .stTextInput > div > div,
     .stNumberInput > div > div,
     .stTextArea > div > div {
-        background: rgba(255, 255, 255, 0.75) !important;
-        backdrop-filter: blur(10px);
+        background: rgba(15, 23, 42, 0.65) !important;
+        backdrop-filter: blur(12px);
         border-radius: 10px !important;
-        border: 1px solid rgba(255, 255, 255, 0.7) !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
         transition: all 0.3s ease;
     }
 
     .stTextInput > div > div:focus-within,
     .stNumberInput > div > div:focus-within,
     .stTextArea > div > div:focus-within {
-        border-color: #0284c7 !important;
-        box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+        border-color: #38bdf8 !important;
+        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25) !important;
     }
 
-    /* Button modern gradient with hover feedback */
+    /* Primary button with vibrant neon accent */
     button[kind="primary"] {
         background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%) !important;
         border: none !important;
         border-radius: 10px !important;
-        box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25) !important;
+        font-weight: 600 !important;
+        box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35) !important;
         transition: transform 0.2s ease, box-shadow 0.2s ease !important;
     }
 
     button[kind="primary"]:hover {
         transform: translateY(-1px);
-        box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35) !important;
+        box-shadow: 0 6px 22px rgba(56, 189, 248, 0.45) !important;
     }
     </style>
     """,
