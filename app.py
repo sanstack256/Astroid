@@ -23,45 +23,46 @@ st.markdown(
         overflow-x: hidden;
     }
 
-    /* Primary smooth-moving green radial gradient orb */
+    /* Primary expansive smooth-moving green radial gradient orb */
     [data-testid="stAppViewContainer"]::before {
         content: "";
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 750px;
-        height: 750px;
+        top: -200px;
+        left: -200px;
+        width: 1400px;
+        height: 1400px;
         border-radius: 50%;
         background: radial-gradient(
             circle,
             rgba(16, 185, 129, 0.22) 0%,
             rgba(5, 150, 105, 0.12) 35%,
-            rgba(4, 120, 87, 0.05) 55%,
-            transparent 70%
+            rgba(4, 120, 87, 0.05) 58%,
+            transparent 75%
         );
-        filter: blur(50px);
-        animation: smoothGreenTravelPrimary 26s ease-in-out infinite alternate;
+        filter: blur(100px);
+        animation: smoothGreenTravelPrimary 28s ease-in-out infinite alternate;
         pointer-events: none;
         z-index: 0;
     }
 
-    /* Secondary subtle green radial gradient orb for continuous ambient flow */
+    /* Secondary expansive subtle green radial gradient orb for continuous ambient flow */
     [data-testid="stAppViewContainer"]::after {
         content: "";
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 600px;
-        height: 600px;
+        top: -150px;
+        left: -150px;
+        width: 1200px;
+        height: 1200px;
         border-radius: 50%;
         background: radial-gradient(
             circle,
             rgba(52, 211, 153, 0.16) 0%,
-            rgba(16, 185, 129, 0.08) 40%,
-            transparent 68%
+            rgba(16, 185, 129, 0.08) 38%,
+            rgba(6, 95, 70, 0.04) 58%,
+            transparent 75%
         );
-        filter: blur(60px);
-        animation: smoothGreenTravelSecondary 32s ease-in-out infinite alternate;
+        filter: blur(110px);
+        animation: smoothGreenTravelSecondary 34s ease-in-out infinite alternate;
         pointer-events: none;
         z-index: 0;
     }
@@ -80,35 +81,35 @@ st.markdown(
     /* Primary green orb smooth journey across the screen */
     @keyframes smoothGreenTravelPrimary {
         0% {
-            transform: translate3d(-10vw, -10vh, 0) scale(1);
+            transform: translate3d(-20vw, -20vh, 0) scale(1);
         }
         25% {
-            transform: translate3d(65vw, 15vh, 0) scale(1.15);
+            transform: translate3d(50vw, 10vh, 0) scale(1.15);
         }
         50% {
-            transform: translate3d(45vw, 65vh, 0) scale(0.95);
+            transform: translate3d(35vw, 55vh, 0) scale(0.95);
         }
         75% {
-            transform: translate3d(5vw, 50vh, 0) scale(1.1);
+            transform: translate3d(-10vw, 40vh, 0) scale(1.1);
         }
         100% {
-            transform: translate3d(55vw, 80vh, 0) scale(1.05);
+            transform: translate3d(45vw, 65vh, 0) scale(1.05);
         }
     }
 
     /* Secondary green orb companion trajectory */
     @keyframes smoothGreenTravelSecondary {
         0% {
-            transform: translate3d(70vw, 75vh, 0) scale(1);
+            transform: translate3d(60vw, 60vh, 0) scale(1);
         }
         30% {
-            transform: translate3d(20vw, 60vh, 0) scale(1.12);
+            transform: translate3d(15vw, 45vh, 0) scale(1.12);
         }
         65% {
-            transform: translate3d(55vw, -5vh, 0) scale(0.92);
+            transform: translate3d(45vw, -15vh, 0) scale(0.95);
         }
         100% {
-            transform: translate3d(-5vw, 25vh, 0) scale(1.08);
+            transform: translate3d(-15vw, 15vh, 0) scale(1.08);
         }
     }
 
