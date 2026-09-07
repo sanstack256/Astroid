@@ -10,6 +10,82 @@ st.set_page_config(
     layout="centered",
 )
 
+# -----------------------------------------------------------------------------
+# Animated Subtle Light Neon Background Gradient
+# -----------------------------------------------------------------------------
+st.markdown(
+    """
+    <style>
+    /* Animated subtle light neon gradient across full viewport */
+    [data-testid="stAppViewContainer"] {
+        background: linear-gradient(
+            -45deg,
+            #e0f7ff 0%,
+            #ede9fe 25%,
+            #ffe8f5 50%,
+            #d1fae5 75%,
+            #e0e7ff 100%
+        ) !important;
+        background-size: 350% 350% !important;
+        animation: subtleNeonShift 18s ease-in-out infinite !important;
+        background-attachment: fixed !important;
+    }
+
+    /* Keep header transparent for seamless background flow */
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+    }
+
+    /* Subtle neon gradient animation */
+    @keyframes subtleNeonShift {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Refined glassmorphism cards for input elements */
+    .stTextInput > div > div,
+    .stNumberInput > div > div,
+    .stTextArea > div > div {
+        background: rgba(255, 255, 255, 0.75) !important;
+        backdrop-filter: blur(10px);
+        border-radius: 10px !important;
+        border: 1px solid rgba(255, 255, 255, 0.7) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+        transition: all 0.3s ease;
+    }
+
+    .stTextInput > div > div:focus-within,
+    .stNumberInput > div > div:focus-within,
+    .stTextArea > div > div:focus-within {
+        border-color: #0284c7 !important;
+        box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+    }
+
+    /* Button modern gradient with hover feedback */
+    button[kind="primary"] {
+        background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%) !important;
+        border: none !important;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25) !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    button[kind="primary"]:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35) !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.title("Asteroid Research Assistant")
 st.subheader("Near-Earth Object Analysis Tool")
 st.write(
